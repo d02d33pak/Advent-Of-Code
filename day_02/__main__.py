@@ -1,8 +1,8 @@
 """
-Day 1 Main Module
+Day 2 Main Module
 """
 
-from day01 import get_input, part1, part2
+from day02 import get_input, part1, part2
 
 if __name__ == "__main__":
     # trying out the new walrus[:=] oprtr in python
