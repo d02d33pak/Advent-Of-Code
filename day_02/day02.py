@@ -35,6 +35,7 @@ def part1(password_entries):
     match_grps = list()
     for entry in password_entries:
         # this is what an entry looks like [1-3 a: aabcc]
+        ### NORMAL CAPTURE GROUPS
         match = re.match(r"^(\d+)-(\d+)\s(\w):\s(\w+)$", entry)
         match_grps.append(match.groups())
 
@@ -64,14 +65,18 @@ def part2(password_entries):
     match_grps = list()
     for entry in password_entries:
         # this is what an entry looks like [1-3 a: aabcc]
-        match = re.match(r"^(\d+)-(\d+)\s(\w):\s(\w+)$", entry)
-        match_grps.append(match.groups())
+        ### NAMED CAPTURE GROUPS
+        match = re.match(
+            r"^(?P<min_>\d+)-(?P<max_>\d+)\s(?P<char>\w):\s(?P<password>\w+)$", entry
+        )
+        match_grps.append(match.groupdict())
 
     for match in match_grps:
         occurrence = 0
-        if match[2] == match[3][int(match[0]) - 1]:
+        # if char exists at either of the 2 given indices
+        if match["char"] == match["password"][int(match["min_"]) - 1]:
             occurrence += 1
-        if match[2] == match[3][int(match[1]) - 1]:
+        if match["char"] == match["password"][int(match["max_"]) - 1]:
             occurrence += 1
         if occurrence == 1:
             result += 1
