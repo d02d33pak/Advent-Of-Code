@@ -1,3 +1,4 @@
-[ ] add main.py to run all days/part of the day
-[ ] learn pytest
-[ ] use pytest for testing code
+[x] add main.py to run all days/part of the day
+[x] learn pytest
+[x] use pytest for testing code
+[ ] solve all pytest errors 

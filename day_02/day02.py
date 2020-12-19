@@ -62,6 +62,7 @@ def part2(password_entries):
     #     if len(indices.intersection(char_indices)) == 1:
     #         result += 1
 
+    ### alternate solution using regex ###
     match_grps = list()
     for entry in password_entries:
         # this is what an entry looks like [1-3 a: aabcc]
