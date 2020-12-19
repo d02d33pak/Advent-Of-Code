@@ -12,4 +12,4 @@ def test_part1():
 
 def test_part2():
     """ Test part two """
-    assert part2("test_input.txt") == 1
+    assert part2(get_input("test_input.txt")) == 1
