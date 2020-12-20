@@ -6,7 +6,7 @@ import re
 from os import path
 
 
-def get_input(filename):
+def parse_input(filename):
     """ Parse input file values """
     script_dir = path.dirname(__file__)
     file_path = path.join(script_dir, filename)
