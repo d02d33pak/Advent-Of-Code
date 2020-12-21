@@ -46,7 +46,8 @@ def part2(all_groups_answer):
     for group_answers in all_groups_answer:
         answered = set("abcdefghijklmnopqrstuvwxyz")
         for answer in group_answers:
-            answered = answered.intersection(set(answer))
+            # answered = answered.intersection(set(answer))
+            answered.intersection_update(set(answer))
 
         everyone_answered += len(answered)
 
