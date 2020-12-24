@@ -54,7 +54,8 @@ def part2(adapters):
         for j in range(i + 1, len(adapters)):
             if adapters[j] - adapters[i] <= 3:
                 answer += repeat(j)
-                visited[i] = answer
+
+        visited[i] = answer
 
         return answer
 
