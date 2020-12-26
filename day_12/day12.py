@@ -23,12 +23,8 @@ def part1(instructions):
     """ Find Manhattan distance """
 
     curr_dir = "E"
-    turns = ["E", "S", "W", "N"]
-    direction = dict()
-    direction["E"] = 0
-    direction["W"] = 0
-    direction["N"] = 0
-    direction["S"] = 0
+    turns = ["E", "S", "W", "N"]  # ordered direction-wise
+    direction = {"E": 0, "W": 0, "N": 0, "S": 0}
 
     for instruction in instructions:
         cmd, val = instruction[0], int(instruction[1])
@@ -52,6 +48,28 @@ def part1(instructions):
 def part2(instructions):
     """ Solve Part two """
 
-    print(instructions)
+    ship_x, ship_y = 0, 0
+    way_x, way_y = 10, 1  # +ve = East, North : -ve = West, South
 
-    return 0
+    for instruction in instructions:
+        cmd, val = instruction[0], int(instruction[1])
+
+        if cmd == "E":
+            way_x += val
+        elif cmd == "W":
+            way_x -= val
+        elif cmd == "N":
+            way_y += val
+        elif cmd == "S":
+            way_y -= val
+        elif cmd == "L":
+            for _ in range(val // 90):
+                way_x, way_y = -way_y, way_x
+        elif cmd == "R":
+            for _ in range(val // 90):
+                way_x, way_y = way_y, -way_x
+        elif cmd == "F":
+            ship_x += val * way_x
+            ship_y += val * way_y
+
+    return abs(ship_x) + abs(ship_y)
