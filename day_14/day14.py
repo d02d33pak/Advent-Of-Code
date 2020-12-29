@@ -17,11 +17,11 @@ def parse_input(filename):
     return values
 
 
+FIND_INDEX = re.compile(r"\[(\d+)\]")
+
 # PART 1
 def part1(data):
     """ sum of dict values after masking """
-
-    find_index = re.compile(r"\[\d+\]")
 
     mask = ""
     result = 0
@@ -31,7 +31,7 @@ def part1(data):
             mask = line.split(" = ")[-1]
         else:
             index, value = line.split(" = ")
-            index = find_index.search(index).group(0)
+            index = FIND_INDEX.search(index).group(1)
             bin_value = "{0:b}".format(int(value)).zfill(36)
 
             new_bin_value = ""
@@ -48,7 +48,45 @@ def part1(data):
     return result
 
 
+def write_value(address, value, mem):
+    """ Recursive helper fn to write values to mem """
+    xpos = address.find("X")
+    if xpos == -1:
+        index = int(address, 2)
+        mem[index] = int(value)
+    else:
+        write_value(address[:xpos] + "0" + address[xpos + 1 :], value, mem)
+        write_value(address[:xpos] + "1" + address[xpos + 1 :], value, mem)
+
+
 # PART 2
 def part2(data):
-    """ remaining values after masking """
-    print(data)
+    """ sum of values after masking system 2.0 """
+
+    result = 0
+    mem = dict()
+    mask = ""
+
+    for line in data:
+        if line.startswith("mask"):
+            mask = line.split(" = ")[-1]
+        else:
+            index, value = line.split(" = ")
+            index = FIND_INDEX.search(index).group(1)
+            address = "{0:b}".format(int(index)).zfill(36)
+
+            new_address = ""
+            for i, bit in enumerate(mask):
+                if bit == "0":
+                    new_address += address[i]
+                elif bit == "1":
+                    new_address += "1"
+                elif bit == "X":
+                    new_address += "X"
+
+            write_value(new_address, value, mem)
+
+    for val in mem.values():
+        result += val
+
+    return result
