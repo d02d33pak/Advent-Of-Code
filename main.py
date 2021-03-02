@@ -6,13 +6,12 @@ Github: @d02d33pak
 
 import os
 
-green = True
+choice = 'y'
 
-while(green):
+while choice == 'y':
 
     day = "day_" + input("Enter Day: ").zfill(2)
     os.system("python3 " + day)
     
     choice = input("Continue? (y/n) ").lower()
-    green = True if choice == 'y' else False
 
