@@ -53,8 +53,8 @@ def part1(data):
             is_invalid = True
 
             for _, ranges in attr.items():
-                low1, high1 = ranges[0][0], ranges[0][1]
-                low2, high2 = ranges[1][0], ranges[1][1]
+                low1, high1 = ranges[0][0], ranges[0][1] + 1
+                low2, high2 = ranges[1][0], ranges[1][1] + 1
 
                 if value in range(low1, high1) or value in range(low2, high2):
                     is_invalid = False
