@@ -58,12 +58,49 @@ def part1(data):
             result = do_operation(operators, operands)
             operands.append(result)
 
-        sum_of_operations += int(operands[0])
+        sum_of_operations += int(operands[0])  # sum of results on each line
 
     return sum_of_operations
 
 
 # PART 2
 def part2(data):
-    """ Check on other criteria """
-    return data
+    """ Evaluate based on operator order """
+    sum_of_operations = 0
+
+    for line in data:
+        operands = []
+        operators = []
+
+        for char in line:
+            if char not in ("+", "*", "(", ")", " "):
+                operands.append(char)
+
+            elif char in ("+", "*"):
+                if len(operators) == 0 or operators[-1] == "(":
+                    operators.append(char)
+                else:
+                    # ADDED FOR PART 2 - PERFORM + BEFORE *
+                    if char == "+" and operators[-1] == "*":
+                        operators.append(char)
+                    else:
+                        result = do_operation(operators, operands)
+                        operands.append(result)
+                        operators.append(char)
+
+            elif char == "(":
+                operators.append(char)
+
+            elif char == ")":
+                while operators[-1] != "(":
+                    result = do_operation(operators, operands)
+                    operands.append(result)
+                _ = operators.pop()  # popping the opening bracket
+
+        while len(operators) != 0:
+            result = do_operation(operators, operands)
+            operands.append(result)
+
+        sum_of_operations += int(operands[0])  # sum of results on each line
+
+    return sum_of_operations
