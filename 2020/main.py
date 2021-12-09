@@ -1,5 +1,5 @@
 """
-Main module to run all days from 1 place
+Main module to run all days from one place
 Author: Deepak Talan
 Github: @d02d33pak
 """
@@ -14,4 +14,3 @@ while choice == 'y':
     os.system("python3 " + day)
     
     choice = input("Continue? (y/n) ").lower()
-
