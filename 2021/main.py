@@ -6,11 +6,11 @@ Github: @d02d33pak
 
 import os
 
-choice = 'y'
+CHOICE = "y"
 
-while choice == 'y':
+while CHOICE == "y":
 
     day = "day_" + input("Enter Day: ").zfill(2)
     os.system("python3 " + day)
-    
-    choice = input("Continue? (y/n) ").lower()
+
+    CHOICE = input("Continue? (y/n) ").lower()
