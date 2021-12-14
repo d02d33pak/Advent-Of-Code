@@ -1,5 +1,5 @@
 """
-Tests for Day 01
+Tests for Day 02
 """
 
 from day02 import parse_input, part1, part2
