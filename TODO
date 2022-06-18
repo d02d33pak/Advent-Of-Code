@@ -3,4 +3,5 @@
 [x] use pytest for testing code
 [x] fix all pytest errors 
 [x] add folder for 2021 AoC
-[ ] use input instead of input.txt
+[x] use input instead of input.txt
+[ ] use type hints in 2021 AoC
