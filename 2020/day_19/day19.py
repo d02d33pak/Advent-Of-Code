@@ -4,6 +4,7 @@ Reference = https://www.youtube.com/watch?v=dgnK4ASzVPU
 """
 
 from os import path
+from venv import create
 
 
 def parse_input(filename):
@@ -85,4 +86,9 @@ def part1(data):
 # PART 2
 def part2(data):
     """Check on other criteria"""
-    return data
+    _ = part1(data)
+
+    print(solved_rules_dict[42])
+    print(solved_rules_dict[31])
+
+    return 0
