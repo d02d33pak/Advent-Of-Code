@@ -4,7 +4,6 @@ Reference = https://www.youtube.com/watch?v=dgnK4ASzVPU
 """
 
 from os import path
-from venv import create
 
 
 def parse_input(filename):
