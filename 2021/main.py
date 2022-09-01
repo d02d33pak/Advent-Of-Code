@@ -14,6 +14,10 @@ while CHOICE == "y":
     if os.path.exists(day):
         os.system("python3 " + day)
     else:
+<<<<<<< HEAD
         print("File not found")
+=======
+        print("Invalid Day")
+>>>>>>> 619429d (day4 part1 done, added check for day input)
 
     CHOICE = input("Continue? (y/n) ").lower()
