@@ -9,5 +9,5 @@
 Fork & Clone or Download and `cd` into the year and run  
 `python3 main.py`  
 or to run specific day  
-`python3 dayxx`  
-xx = 01, 02, ...XX.
+`python3 day_xx`  
+xx = 01, 02,...,25.
