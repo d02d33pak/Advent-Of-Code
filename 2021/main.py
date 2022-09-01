@@ -11,6 +11,9 @@ CHOICE = "y"
 while CHOICE == "y":
 
     day = "day_" + input("Enter Day: ").zfill(2)
-    os.system("python3 " + day)
+    if os.path.exists(day):
+        os.system("python3 " + day)
+    else:
+        print("Invalid Day")
 
     CHOICE = input("Continue? (y/n) ").lower()
